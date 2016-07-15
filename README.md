@@ -23,7 +23,8 @@ In the Config/server.txt you find:
 
       inventory.bin and deposit.bin are used to save players inventory and deposit items to database asa BLOB.
       Format:each item is writed as an int[4 bytes].
-
+      v1010
+      -ugly -buggy
       v1020
       -rsolved some bugs
       -more stabile
