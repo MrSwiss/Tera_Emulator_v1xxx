@@ -29,3 +29,11 @@ In the Config/server.txt you find:
       -more stabile
       -added future need code
       -max point[login->hit lobby]
+      v1025
+      -changed Client Recv and Send overall logic.
+            -now send and receive are on separated threads
+            -Send(byte*,unsigned int) mutexted function, ads ISendPackets to the queue
+            -InternalSend(byte*,unsigned int) accessed only by Send thread, encrypts the data and sends it over the network to client
+            -receive gets 1 packet processes it and adds packets to be sent to the queue
+            -while receive thread -> othre threads may post packets [like chat system...] [NOT TESTED]
+            -send thread pops all the elements in the queue [ISendPacket] and InternalSend(s) them.
